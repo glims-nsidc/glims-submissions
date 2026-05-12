@@ -1,0 +1,61 @@
+name: Extinct Glacier
+description: Submit one or more glaciers to be marked as extinct in the GLIMS database.
+title: "Extinct glacier: "
+labels:
+  - "extinct glacier"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request that one or more glaciers be marked as extinct (`glacier_status = 'gone'`) in `glacier_static`. Provide one GLIMS glacier ID per line in the field below, along with the disappearance metadata that applies to all listed glaciers.
+
+        If different glaciers have different disappearance dates or sources, please open a separate issue for each group.
+
+  - type: textarea
+    id: glacier_ids
+    attributes:
+      label: Glacier IDs
+      description: One GLIMS glacier ID per line (e.g. `G006813E46133N`).
+
+    validations:
+      required: true
+
+  - type: input
+    id: est_disappear_date
+    attributes:
+      label: Estimated disappearance date (`est_disappear_date`)
+      description: Best estimate of when the glacier disappeared. Use ISO format `YYYY-MM-DD`. Day and month may be approximate.
+    validations:
+      required: true
+
+  - type: input
+    id: est_disappear_unc
+    attributes:
+      label: Disappearance date uncertainty in days (`est_disappear_unc`)
+      description: Integer number of days of uncertainty around the disappearance date.
+    validations:
+      required: true
+
+  - type: input
+    id: gone_source
+    attributes:
+      label: Source (`gone_source`)
+      description: Attribution for the disappearance determination — submitter name, institution, and/or DOI.
+    validations:
+      required: true
+
+  - type: input
+    id: glims_added_extinct_date
+    attributes:
+      label: Date added to GLIMS as extinct (`glims_added_extinct_date`)
+      description: Leave blank to default to today's date when the SQL is generated.
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Any context useful for the analyst processing this request.
+    validations:
+      required: false

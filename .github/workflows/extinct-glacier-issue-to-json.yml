@@ -68,6 +68,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/extinct_glacier_submissions.json
+          git add data/extinct_glacier_submission_${{ github.event.issue.number }}.json
           git diff --cached --quiet || git commit -m "Add extinct_glacier_submission_${{ github.event.issue.number }}.json"
           git push

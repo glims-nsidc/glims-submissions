@@ -16,7 +16,7 @@ body:
     id: glacier_ids
     attributes:
       label: Glacier IDs
-      description: One GLIMS glacier ID per line (e.g. `G006813E46133N`).
+      description: One GLIMS glacier ID per line, or attach a file (.txt, .csv, or .xlsx). For text and CSV files, one ID per line or per cell in the first column. For Excel files, IDs in the first column of the first sheet.
 
     validations:
       required: true

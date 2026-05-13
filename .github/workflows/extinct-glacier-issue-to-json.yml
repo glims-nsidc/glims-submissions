@@ -1,0 +1,73 @@
+name: Parse extinct glacier issue to JSON
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  parse-to-json:
+    if: contains(github.event.issue.labels.*.name, 'extinct glacier')
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Parse issue body and append to JSON
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const body = context.payload.issue.body || '';
+            const issueNumber = context.payload.issue.number;
+            const issueUrl = context.payload.issue.html_url;
+            const createdAt = context.payload.issue.created_at;
+
+            // Parse sections from the markdown body.
+            // GitHub issue forms render each field as a ### heading followed by the value.
+            function parseSection(body, heading) {
+              const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+              const regex = new RegExp(`###\\s*${escaped}\\s*\\n+([\\s\\S]*?)(?=\\n###|$)`);
+              const match = body.match(regex);
+              if (!match) return null;
+              const value = match[1].trim();
+              // GitHub renders empty optional fields as "_No response_"
+              return (value === '_No response_' || value === '') ? null : value;
+            }
+
+            const glacierIdsRaw = parseSection(body, 'Glacier IDs');
+            const glacierIds = glacierIdsRaw
+              ? glacierIdsRaw.split('\n').map(s => s.trim()).filter(Boolean)
+              : [];
+
+            const entry = {
+              issue_number: issueNumber,
+              issue_url: issueUrl,
+              created_at: createdAt,
+              glacier_ids: glacierIds,
+              est_disappear_date: parseSection(body, 'Estimated disappearance date (`est_disappear_date`)'),
+              est_disappear_unc: parseSection(body, 'Disappearance date uncertainty in days (`est_disappear_unc`)'),
+              gone_source: parseSection(body, 'Source (`gone_source`)'),
+              glims_added_extinct_date: parseSection(body, 'Date added to GLIMS as extinct (`glims_added_extinct_date`)'),
+              notes: parseSection(body, 'Additional notes'),
+            };
+
+            console.log('Parsed entry:', JSON.stringify(entry, null, 2));
+
+            const jsonPath = path.join(process.env.GITHUB_WORKSPACE, 'data', `extinct_glacier_submission_${issueNumber}.json`);
+            fs.mkdirSync(path.dirname(jsonPath), { recursive: true });
+            fs.writeFileSync(jsonPath, JSON.stringify(entry, null, 2));
+            console.log(`Written entry to ${jsonPath}`);
+
+      - name: Commit updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/extinct_glacier_submissions.json
+          git diff --cached --quiet || git commit -m "Add extinct_glacier_submission_${{ github.event.issue.number }}.json"
+          git push

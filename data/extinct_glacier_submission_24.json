@@ -1,0 +1,15 @@
+{
+  "issue_number": 24,
+  "issue_url": "https://github.com/glims-nsidc/glims-submissions/issues/24",
+  "created_at": "2026-05-13T22:50:34Z",
+  "glacier_ids": [
+    "G006813E46133N",
+    "G006813E46134N",
+    "G006813E46153N"
+  ],
+  "est_disappear_date": "2024-01-01",
+  "est_disappear_unc": "67",
+  "gone_source": "TEST",
+  "glims_added_extinct_date": "2026-05-11",
+  "notes": null
+}

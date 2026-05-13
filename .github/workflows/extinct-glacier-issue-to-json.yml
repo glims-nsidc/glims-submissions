@@ -16,12 +16,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Install xlsx parser
+        run: npm install xlsx
+
       - name: Parse issue body and append to JSON
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
             const path = require('path');
+            const https = require('https');
+            const XLSX = require(`${process.env.GITHUB_WORKSPACE}/node_modules/xlsx`);
 
             const body = context.payload.issue.body || '';
             const issueNumber = context.payload.issue.number;
@@ -40,10 +45,67 @@ jobs:
               return (value === '_No response_' || value === '') ? null : value;
             }
 
+            // Fetch a URL and return the response as a Buffer.
+            function fetchBuffer(url) {
+              return new Promise((resolve, reject) => {
+                https.get(url, { headers: { 'Authorization': `token ${process.env.GITHUB_TOKEN}`, 'User-Agent': 'github-actions' } }, (res) => {
+                  if (res.statusCode === 302 || res.statusCode === 301) {
+                    return fetchBuffer(res.headers.location).then(resolve).catch(reject);
+                  }
+                  const chunks = [];
+                  res.on('data', chunk => chunks.push(chunk));
+                  res.on('end', () => resolve(Buffer.concat(chunks)));
+                  res.on('error', reject);
+                });
+              });
+            }
+
+            // Parse glacier IDs from a file attachment linked in the section value.
+            // Handles .txt, .csv (first column), and .xlsx (first column, first sheet).
+            async function parseAttachment(raw) {
+              const linkMatch = raw.match(/\[.*?\]\((https:\/\/github\.com\/[^\)]+)\)/);
+              if (!linkMatch) return null;
+
+              const url = linkMatch[1];
+              const ext = url.split('?')[0].split('.').pop().toLowerCase();
+              console.log(`Detected attachment: ${url} (type: ${ext})`);
+
+              const buf = await fetchBuffer(url);
+
+              if (ext === 'txt') {
+                return buf.toString('utf8').split('\n').map(s => s.trim()).filter(Boolean);
+              }
+
+              if (ext === 'csv') {
+                return buf.toString('utf8')
+                  .split('\n')
+                  .map(line => line.split(',')[0].trim())
+                  .filter(Boolean);
+              }
+
+              if (ext === 'xlsx') {
+                const workbook = XLSX.read(buf, { type: 'buffer' });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                return rows.map(row => String(row[0] || '').trim()).filter(Boolean);
+              }
+
+              console.log(`Unsupported attachment type: ${ext} — storing raw value`);
+              return null;
+            }
+
             const glacierIdsRaw = parseSection(body, 'Glacier IDs');
-            const glacierIds = glacierIdsRaw
-              ? glacierIdsRaw.split('\n').map(s => s.trim()).filter(Boolean)
-              : [];
+
+            // Check whether the section contains a file attachment link or plain pasted IDs.
+            let glacierIds = [];
+            if (glacierIdsRaw) {
+              const fromFile = await parseAttachment(glacierIdsRaw);
+              if (fromFile) {
+                glacierIds = fromFile;
+              } else {
+                glacierIds = glacierIdsRaw.split('\n').map(s => s.trim()).filter(Boolean);
+              }
+            }
 
             const entry = {
               issue_number: issueNumber,

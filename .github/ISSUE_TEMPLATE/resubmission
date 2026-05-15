@@ -1,0 +1,15 @@
+name: Glacier Ingest Resubmission/Correction
+description: Edit or resubmit a previously submitted glims ingest. (this is a draft right now)
+title: "Ingest Resubmission/Correction: "
+labels:
+  - "resubmission"
+projects: ["glims-nsidc/projects/1"]
+body:
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Any context useful for the analyst processing this request.
+    validations:
+      required: false

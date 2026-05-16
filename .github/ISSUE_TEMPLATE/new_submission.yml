@@ -1,0 +1,167 @@
+name: New Submission
+description: Start a new submission of glacier outlines to the GLIMS database
+title: New Submission
+labels:
+  - "new submission"
+projects: ["glims-nsidc/projects/1"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to start a new submission of one or more glacier outlines to the GLIMS Glacier Database.
+
+        For a description of the submission process and the information and files required for a submission, please see [How to submit new glacier outlines to the GLIMS Glacier Database]()
+
+  - type: markdown
+    attributes:
+      value: |
+        # Geographic Region
+
+        These fields are required to define the geographic region for the glacier outlines you are submitting.
+        
+  - type: input
+    id: rc_id
+    attributes:
+      label: Regional Center ID
+      description: The ID number of the Regional Center that covers the outlines you are submitting.  For a list of Regional Center IDs, see [GLIMS Regional Centers](https://www.glims.org/maps/nsidc_rc_table_public.html).
+    validations:
+      required: true
+      
+  - type: input
+    id: region_label
+    attributes:
+      label: Geographic Region
+      description: |
+        The common name for the geographic region containing the glacier outlines.  For country inventories please use the country name (_is there an ISO list_).  For multi-national regions, please use the commonly accepted name for this region, for example North America, European Alps, Himalaya, High Mountain Asia.  For smaller regions, please give the state, mountain range or other commonly recognized term.
+      validations:
+        required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        # Personnel
+
+        The name of the person submitting the outlines and the names of analysts who mapped the glacier outlines.
+
+  - type: input
+    id: submittor_name
+    attributes:
+      label: Your Name
+      description: |
+        Please provide your name (surname, given name), institution, address, email
+
+        For example:
+        `Agassiz, Louis, University of Neuchâtel, Avenue du 1er-Mars 26, CH - 2000, Neuchâtel, Neuchâtel, Canton of Neuchâtel, Switzerland`
+    validations:
+      required: true
+
+  - type: textarea
+    id: analysts
+    attributes:
+      label: Analysts
+      description: |
+        If anyone else other than yourself contributed to mapping the glacier outlines, please add their contact information here.
+
+        For example:
+        `von Humbolt, Alexander, Department of Mines, Principality of Bayreuth, Bayreuth, Germany`
+        `Lyell, Charles, Department of Geology Kings College London, Kings College London, Strand, London WC2R 2LS, United Kingdom`
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Files
+
+        Please provide information about data and metadata files you are providing.
+
+  - type: input
+    id: file_name
+    attributes:
+      label: Glacier outline file
+      description: |
+        Please provide the name of the file containing the vector features for the glacier outlines you are submitting.
+
+        Accepted files formats are: ESRI Shapefiles and GeoJSON
+
+        Please refer to [GLIMS File Format Requirements]() for information about the file content and vector feature attributes required.
+        
+      validations:
+        required: true
+
+   - type: input
+     id: file_size
+     attributes:
+       label: Glacier outline file size in bytes
+     validations:
+       required: true
+       
+   - type: input
+     id: sources_file_name
+     attributes:
+       label: Data sources file names
+       description: |
+         We require a list of data sources used to create outlines.  For most submissions these are a list of images, dems or maps.
+
+         Please refer to [GLIMS File Format Requirements]() for information about the file content
+     validations:
+       required: true
+
+   - type: textarea
+     id: additional_files
+     attributes:
+       label: Additional files
+       description: |
+         Please provide a list of additional files you are providing and a description of the contents of these files.
+
+         For example:
+         `data_dictionary.txt, a list of attributes in glaciers.shp`
+     validations:
+       required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        # Analysis Information
+
+Date/time analysis was performed (ISO 8601, e.g. YYYY-MM-DD): 
+Date/Time stamp of submission (ISO 8601, e.g. YYYY-MM-DDTHH:mm:ss+00:00):                          `submission_time = 20140811_090000` (Generate automatically)
+
+## Methods
+
+### Source of data used to map outlines
+
+Type of data source
+Image or Map (or DEM): ["image","map","dem"]
+
+For each image, dem or map sheet used for mapping outlines provide (normally provided as shapefile)
+- Polygon or center point of image, dem or map-sheet
+- instrument name (e.g. Sentinel-2, PlanetScope) If aerial photographs used provide full title of collection.  _Provide examples_  For maps provide publisher, name of map series, scale
+- original id or granule name of data sources (e.g. ######)
+- date/time image data acquired, or of dem (e.g. LIDAR) or aerial survey
+
+### Source data processing
+
+geocoding_with_image= yes                    # Was image transformed from latitude, longitude to projected coordinates
+georegistration_gpcs= no                     # Was image converted from image coordinates to geographic coordinates
+orthorectification_dem_dtm= no               # Was image orthorectified
+dn_radiance_conversion= no                   # Was image DN converted to radiance?
+sun_elev_correction= no                      # Was image corrected for solar geometry?
+image_radiometric_correction= no             # Was image radiometrically corrected?
+model_radiometric_correction= no             # ?
+anisotropic_reflectance= no                  # Was image corrected for anisotropic reflectance
+slope_aspect_correction= no                  # Was a terrain correction applied?
+band_ratio_linear_trans= no                  # Was a band ratio or linear transform used?
+spatial_filtering= no                        #
+geomorphological_analysis= no                #
+texture_analysis= no                         #
+manual_digitization= yes                     # Were outlines manually digitized
+percent_manual_editing= 30                   # Percentage of outlines manually edited?
+supervised_classification= no                # Was supervised classification used
+supervised_title=                            # Name of supervised classification method [controlled vocab?]
+unsupervised_classification= no              # Was unsupervised classification method used
+unsupervised_title=                          # Name of unsupervised classification method used
+process_description= Semi-automatic mapping from Landsat satellite images and SRTM digital elevation model.  # Description of mapping method
+embargo_period= None                         # End of embargo period or number of months and/or number of years
+analysis_tools= ESRI                         # Name of tool/platform used
+analysis_tools_other=                        # Name of other tools/platforms (is this necessary)

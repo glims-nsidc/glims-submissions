@@ -86,38 +86,38 @@ body:
 
         Please refer to [GLIMS File Format Requirements]() for information about the file content and vector feature attributes required.
         
-      validations:
-        required: true
+    validations:
+      required: true
 
-   - type: input
-     id: file_size
-     attributes:
-       label: Glacier outline file size in bytes
-     validations:
-       required: true
+  - type: input
+    id: file_size
+    attributes:
+      label: Glacier outline file size in bytes
+    validations:
+      required: true
        
-   - type: input
-     id: sources_file_name
-     attributes:
-       label: Data sources file names
-       description: |
-         We require a list of data sources used to create outlines.  For most submissions these are a list of images, dems or maps.
+  - type: input
+    id: sources_file_name
+    attributes:
+      label: Data sources file names
+      description: |
+        We require a list of data sources used to create outlines.  For most submissions these are a list of images, dems or maps.
 
-         Please refer to [GLIMS File Format Requirements]() for information about the file content
-     validations:
-       required: true
+        Please refer to [GLIMS File Format Requirements]() for information about the file content
+    validations:
+      required: true
 
-   - type: textarea
-     id: additional_files
-     attributes:
-       label: Additional files
-       description: |
-         Please provide a list of additional files you are providing and a description of the contents of these files.
+  - type: textarea
+    id: additional_files
+    attributes:
+      label: Additional files
+      description: |
+        Please provide a list of additional files you are providing and a description of the contents of these files.
 
-         For example:
-         `data_dictionary.txt, a list of attributes in glaciers.shp`
-     validations:
-       required: false
+        For example:
+        `data_dictionary.txt, a list of attributes in glaciers.shp`
+    validations:
+      required: false
 
   - type: markdown
     attributes:
@@ -241,4 +241,3 @@ body:
         Please enter the name of the tool or platform used for analysis, for example, ESRI ArcGIS.  Use a seperate line for each tool.
     validations:
       required: true
-

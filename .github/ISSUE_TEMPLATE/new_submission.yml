@@ -14,10 +14,9 @@ body:
 
   - type: markdown
     attributes:
-      value: |
-        "# Geographic Region
-
-        These fields are required to define the geographic region for the glacier outlines you are submitting."
+      value: '# Geographic Region
+        
+        These fields are required to define the geographic region for the glacier outlines you are submitting.'
         
   - type: input
     id: rc_id

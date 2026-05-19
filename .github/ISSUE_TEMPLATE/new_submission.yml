@@ -1,6 +1,6 @@
 name: New Submission
 description: Start a new submission of glacier outlines to the GLIMS database
-title: New Submission
+title: "New Submission"
 labels:
   - "new submission"
 projects: ["glims-nsidc/projects/1"]

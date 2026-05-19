@@ -163,11 +163,12 @@ body:
         - label: Was a model radiometric correction applied? (model_radiometric_correction)
         - label: Was image corrected for anisotropic reflectance? (anisotropic_reflectance)
         - label: Was a terrain correction applied? (slope_aspect_correction)
-
         - label: Was a band ratio or linear transform used? (band_ratio_linear_trans)
         - label: (spatial_filtering)
         - label: (geomorphological_analysis)
         - label: (texture_analysis)
+    validations:
+      required: false
 
   - type: textarea
     id: process_description
@@ -234,6 +235,8 @@ body:
       description: |
         If you wish the data to be embargoed, please provide the date for the end of the embargo period using ISO8601 (YYYY-MM-DD) or provide the number of months data are embargoed
       value: 0
+    validations:
+      required: true
 
   - type: textarea
     id: analysis_tools

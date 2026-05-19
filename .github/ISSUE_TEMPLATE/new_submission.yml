@@ -145,6 +145,8 @@ body:
         - DEM
         - Published Map
         - Survey
+    validations:
+      required: true
       
   - type: checkboxes
     id: processing

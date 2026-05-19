@@ -15,9 +15,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        # Geographic Region
+        "# Geographic Region
 
-        These fields are required to define the geographic region for the glacier outlines you are submitting.
+        These fields are required to define the geographic region for the glacier outlines you are submitting."
         
   - type: input
     id: rc_id
@@ -39,9 +39,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        # Personnel
+        "# Personnel
 
-        The name of the person submitting the outlines and the names of analysts who mapped the glacier outlines.
+        The name of the person submitting the outlines and the names of analysts who mapped the glacier outlines."
 
   - type: input
     id: submittor_name
@@ -71,9 +71,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Files
+        "## Files
 
-        Please provide information about data and metadata files you are providing.
+        Please provide information about data and metadata files you are providing."
 
   - type: input
     id: file_name
@@ -120,8 +120,7 @@ body:
 
   - type: markdown
     attributes:
-      value: |
-        # Analysis Information
+      value: "# Analysis Information"
 
   - type: input
     id: analysis_time
@@ -150,7 +149,7 @@ body:
   - type: checkboxes
     id: processing
     attributes:
-      value: ## Processing
+      value: "## Processing"
       description: Please check all processing steps applied to data sources before mapping outlines.
       options:
         - label: Was image transformed from latitude, longitude to projected coordinates? (geocoding_with_image)

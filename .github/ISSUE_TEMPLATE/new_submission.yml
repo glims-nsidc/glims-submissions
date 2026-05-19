@@ -85,7 +85,6 @@ body:
         Accepted files formats are: ESRI Shapefiles and GeoJSON
 
         Please refer to [GLIMS File Format Requirements]() for information about the file content and vector feature attributes required.
-        
     validations:
       required: true
 

@@ -23,6 +23,7 @@ body:
     attributes:
       label: Regional Center ID
       description: The ID number of the Regional Center that covers the outlines you are submitting.  For a list of Regional Center IDs, see [GLIMS Regional Centers](https://www.glims.org/maps/nsidc_rc_table_public.html).
+    
     validations:
       required: true
       
@@ -32,7 +33,7 @@ body:
       label: Geographic Region
       description: |
         The common name for the geographic region containing the glacier outlines.  For country inventories please use the country name (_is there an ISO list_).  For multi-national regions, please use the commonly accepted name for this region, for example North America, European Alps, Himalaya, High Mountain Asia.  For smaller regions, please give the state, mountain range or other commonly recognized term.
-      validations:
+    validations:
         required: true
 
   - type: markdown
@@ -148,7 +149,7 @@ body:
   - type: checkboxes
     id: processing
     attributes:
-      value: "## Processing"
+      label: "Processing"
       description: Please check all processing steps applied to data sources before mapping outlines.
       options:
         - label: Was image transformed from latitude, longitude to projected coordinates? (geocoding_with_image)
@@ -181,8 +182,8 @@ body:
       label: Method of digitization
       description: Were outlines digitized by hand? If a combination of automated and manual digitizations methods were used please answer yes and indicate the estimated percentage of manual digitization in the following section.
       options:
-        - label: Manual
-        - label: Automatic (add a machine learning question)
+        - Manual
+        - Automatic (add a machine learning question)
     validations:
       required: true
 
@@ -190,7 +191,7 @@ body:
     id: percent_manual_editing
     attributes:
       label: What percentage of outlines were manually edited?
-      value: 0
+      value: "0"
     validations:
       required: false
 
@@ -203,7 +204,7 @@ body:
       options:
         - label: Supervised
         - label: Unsupervised
-      default: None
+      default: "None"
     validations:
       required: true
 

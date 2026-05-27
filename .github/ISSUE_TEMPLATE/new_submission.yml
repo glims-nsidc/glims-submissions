@@ -191,7 +191,7 @@ body:
     id: percent_manual_editing
     attributes:
       label: What percentage of outlines were manually edited?
-      value: "0"
+      value: 0
     validations:
       required: false
 

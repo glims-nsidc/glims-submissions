@@ -232,7 +232,7 @@ body:
       label: Embargo period
       description: |
         If you wish the data to be embargoed, please provide the date for the end of the embargo period using ISO8601 (YYYY-MM-DD) or provide the number of months data are embargoed
-      value: 0
+      value: "0"
     validations:
       required: true
 

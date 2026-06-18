@@ -8,6 +8,8 @@ on:
 jobs:
   create-jira-issue:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     if: |
       contains(github.event.issue.labels.*.name, 'resubmission') ||
       contains(github.event.issue.labels.*.name, 'new submission') ||
@@ -27,10 +29,7 @@ jobs:
           project: DPT
           issuetype: Story
           summary: "${{ github.event.issue.title }}"
-          description: |
-            ${{ github.event.issue.body }}
-
-            ---
+          description: 
             _Synced from GitHub issue: ${{ github.event.issue.html_url }}_
           fields: |
             {

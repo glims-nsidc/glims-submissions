@@ -29,8 +29,7 @@ jobs:
           project: DPT
           issuetype: Story
           summary: "${{ github.event.issue.title }}"
-          description: 
-            _Synced from GitHub issue: ${{ github.event.issue.html_url }}_
+          description: "Synced from GitHub issue: ${{ github.event.issue.html_url }}"
           fields: |
             {
               "labels": ["nsidc0272"],

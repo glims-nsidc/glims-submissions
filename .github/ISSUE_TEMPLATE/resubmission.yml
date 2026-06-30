@@ -1,15 +1,59 @@
 name: Glacier Ingest Resubmission/Correction
-description: Edit or resubmit a previously submitted glims ingest. (this is a draft right now)
+description: Edit or resubmit a previously submitted glims ingest.
 title: "Ingest Resubmission/Correction: "
 labels:
   - "resubmission"
 projects: ["glims-nsidc/projects/1"]
 body:
 
+  - type: input
+    id: original-submission
+    attributes:
+      label: Original submission ID
+      description: Submission_Info ID, RC ID, or other identifier for the submission being corrected/resubmitted.
+      placeholder: "e.g. submission 880, RC ID NO-..."
+    validations:
+      required: true
+
+  - type: input
+    id: previous-issue-link
+    attributes:
+      label: Link to previous submission issue/PR
+      description: URL to the GitHub issue or PR for the original submission.
+      placeholder: "https://github.com/glims-nsidc/.../issues/..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Reason for resubmission
+      description: What prompted this correction?
+      options:
+        - Geometry/outline correction
+        - Metadata error (rc_id, region_label, submitter_id, etc.)
+        - Instrument/session info correction
+        - Analyst assignment correction
+        - New or corrected data from submitter
+        - Other (explain in notes)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope of change
+      description: What does this resubmission affect? (helps determine next steps)
+      options:
+        - label: Outlines/geometry
+        - label: Attribute/metadata only
+        - label: Instrument or session info
+        - label: Analyst assignment
+
   - type: textarea
     id: notes
     attributes:
       label: Additional notes
-      description: Any context useful for the analyst processing this request.
+      description: Any context useful for the analyst processing this request — why this is happening, what changed, anything unusual about the original ingest.
     validations:
-      required: false
+      required: true

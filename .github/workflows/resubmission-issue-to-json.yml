@@ -1,0 +1,33 @@
+name: Parse resubmission issue to JSON
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  parse-to-json:
+    if: contains(github.event.issue.labels.*.name, 'resubmission')
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Parse issue and write JSON
+        env:
+          ISSUE_BODY: ${{ toJSON(github.event.issue.body) }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          CREATED_AT: ${{ github.event.issue.created_at }}
+        run: python .github/scripts/parse_resubmission.py
+
+      - name: Commit JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/resubmission_${{ github.event.issue.number }}.json
+          git diff --cached --quiet || git commit -m "Add resubmission_${{ github.event.issue.number }}.json"
+          git push

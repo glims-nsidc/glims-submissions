@@ -44,6 +44,15 @@ body:
       description: Attribution for the disappearance determination — submitter name, institution, and/or DOI.
     validations:
       required: true
+  
+  - type: input
+    id: method
+    attributes:
+      label: Method (`method`)
+      description: Method... 
+    validations:
+      required: true
+
 
   - type: input
     id: glims_added_extinct_date

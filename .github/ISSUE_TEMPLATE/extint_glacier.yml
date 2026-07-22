@@ -45,11 +45,16 @@ body:
     validations:
       required: true
   
-  - type: input
+  - type: dropdown
     id: method
     attributes:
       label: Method (`method`)
-      description: Method... 
+      description: Method for determining the glacier(s) are extinct.
+      options:
+        - Differencing of inventories
+        - In situ visit
+        - Imagery comparisons
+        - Other (explain in notes)
     validations:
       required: true
 

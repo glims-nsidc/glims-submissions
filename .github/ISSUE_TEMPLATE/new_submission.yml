@@ -69,10 +69,9 @@ body:
 
   - type: markdown
     attributes:
-      value: |
-        "Files
+      value: '# Files
 
-        Please provide information about data and metadata files you are providing."
+        Please provide information about data and metadata files you are providing.'
 
   - type: input
     id: file_name

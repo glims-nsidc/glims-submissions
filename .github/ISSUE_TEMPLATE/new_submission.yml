@@ -249,3 +249,12 @@ body:
         Please enter the name of the tool or platform used for analysis, for example, ESRI ArcGIS.  Use a seperate line for each tool.
     validations:
       required: true
+
+  - type: textarea
+    id: citation
+    attributes:
+      label: Publication
+      description: |
+        Please provide the citation for any publications related to this submission, including a DOI and/or URL to the publication.  
+    validations:
+      required: false

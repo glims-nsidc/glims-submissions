@@ -206,12 +206,12 @@ body:
     attributes:
       label: Type of classification used
       description: Please indicate if a supervised or unsupervised classification method was used.  This can apply to traditional classification methods (e.g. ????) or deep-learning methods.
-      multiple: true
       options:
         - Supervised
         - Unsupervised
+      default: None
     validations:
-      required: true
+      required: false
 
   - type: input
     id: supervised_title

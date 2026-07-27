@@ -132,18 +132,22 @@ body:
     validations:
       required: true
       
-  - type: dropdown
+  - type: checkboxes
     id: source_type
     attributes:
-      label: What type of source data were used to map outlines.  Please select all that apply.
-      description: For each image, map or dem please rovide either a centroid or polygon defining the spatial extent of the source.  This is usually provided as a separate Shapefile or GeoJSON.  For satellite images, please include the name of the instrument (e.g. Landsat 8, Sentinel-2, PlanetScope), the original image id or granule name (e.g. ADD_SENTINEL-2_ID), and date image acquired.  For aerial imagery please provide the full title of the image collection.  For maps, provide the publisher, name of map series, sheet number, date of publication and scale.  For examles, see EXAMPLES_OF_IMAGES.
+      label: |
+      What types of source data were used to map outlines?
+      description:   |
+      Please select all that apply.
+
+      Name of data source, image id, and centroid or polygon defining the spatial extent of each source should be included as attributes for individual glacier outlines shapefile (or GeoJSON) or as a separate file.  See [New Submission Guidelines](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html) for guidelines. 
       multiple: true
       options:
-        - Satellite Imagery
-        - Aerial Imagery
-        - DEM
-        - Published Map
-        - Survey
+        - label: Satellite Imagery
+        - label: Aerial Imagery
+        - label: DEM
+        - label: Published Map
+        - label: Field Survey
     validations:
       required: true
       

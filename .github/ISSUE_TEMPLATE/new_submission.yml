@@ -118,7 +118,7 @@ body:
 
   - type: markdown
     attributes:
-      value: "# Analysis Information"
+      value: "# Describe Your Analysis Methods"
 
   - type: input
     id: analysis_time
@@ -126,6 +126,9 @@ body:
       label: Date analysis was performed
       description: |
         Please provide the date on which the outlines were mapped in ISO8601 format (YYYY-MM-DD)
+
+        This date is used for tracking in the database.  For large mapping efforts over longer periods of time, choose a representative date.  For example, if glaciers were mapped during the period August through November 2026, 2026-08-01, 2026-10-01, 2026-11-01 are all acceptable dates.
+        
     validations:
       required: true
       

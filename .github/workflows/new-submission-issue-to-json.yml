@@ -6,7 +6,7 @@ on:
 
 jobs:
   parse-to-json:
-    if: contains(github.event.issue.labels.*.name, 'new-submission')
+    if: contains(github.event.issue.labels.*.name, 'new submission')
     runs-on: ubuntu-latest
 
     permissions:

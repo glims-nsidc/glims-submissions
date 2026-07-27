@@ -185,10 +185,11 @@ body:
     id: manual_digitization
     attributes:
       label: Method of digitization
-      description: Were outlines digitized by hand? If a combination of automated and manual digitizations methods were used please answer yes and indicate the estimated percentage of manual digitization in the following section.
+      description: Were outlines digitized by hand or automatically? If outlines were created automatically and then edited by hand, please indicate the estimated percentage of manual digitization in the following section.
       options:
         - Manual
-        - Automatic (add a machine learning question)
+        - Automatic
+        - Automatic with manual editing
     validations:
       required: true
 

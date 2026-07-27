@@ -38,10 +38,9 @@ body:
 
   - type: markdown
     attributes:
-      value: |
-        "# Personnel
+      value: '# Personnel
 
-        The name of the person submitting the outlines and the names of analysts who mapped the glacier outlines."
+        The name of the person submitting the outlines and the names of analysts who mapped the glacier outlines.'
 
   - type: input
     id: submittor_name

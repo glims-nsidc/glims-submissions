@@ -1,6 +1,6 @@
 name: New Submission
 description: Start a new submission of glacier outlines to the GLIMS database
-title: "New Submission"
+title: "[New Submission]: "
 labels:
   - "new submission"
 projects: ["glims-nsidc/projects/1"]
@@ -10,7 +10,11 @@ body:
       value: |
         Use this form to start a new submission of one or more glacier outlines to the GLIMS Glacier Database.
 
-        For a description of the submission process and the information and files required for a submission, please see [How to submit new glacier outlines to the GLIMS Glacier Database]()
+        For the submission title, please include your name as the _submitter_, the name of the country or region containing your outlines and the year or years of the outlines.
+
+        For example, "[New Submission]: Agassiz, glacier outlines of Switzerland, 1840”.
+
+        For a description of the submission process and the information and files required for a submission, please see [How to submit new glacier outlines to the GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html)
 
   - type: markdown
     attributes:
@@ -38,10 +42,9 @@ body:
 
   - type: markdown
     attributes:
-      value: |
-        "# Personnel
+      value: '# Personnel
 
-        The name of the person submitting the outlines and the names of analysts who mapped the glacier outlines."
+        The name of the person submitting the outlines and the names of analysts who mapped the glacier outlines.'
 
   - type: input
     id: submittor_name
@@ -70,10 +73,9 @@ body:
 
   - type: markdown
     attributes:
-      value: |
-        "Files
+      value: '# Files
 
-        Please provide information about data and metadata files you are providing."
+        Please provide information about data and metadata files you are providing.'
 
   - type: input
     id: file_name
@@ -120,7 +122,7 @@ body:
 
   - type: markdown
     attributes:
-      value: "# Analysis Information"
+      value: "# Describe Your Analysis Methods"
 
   - type: input
     id: analysis_time
@@ -128,21 +130,28 @@ body:
       label: Date analysis was performed
       description: |
         Please provide the date on which the outlines were mapped in ISO8601 format (YYYY-MM-DD)
+
+        This date is used for tracking in the database.  For large mapping efforts over longer periods of time, choose a representative date.  For example, if glaciers were mapped during the period August through November 2026, 2026-08-01, 2026-10-01, 2026-11-01 are all acceptable dates.
+        
     validations:
       required: true
       
-  - type: dropdown
+  - type: checkboxes
     id: source_type
     attributes:
-      label: What type of source data were used to map outlines.  Please select all that apply.
-      description: For each image, map or dem please rovide either a centroid or polygon defining the spatial extent of the source.  This is usually provided as a separate Shapefile or GeoJSON.  For satellite images, please include the name of the instrument (e.g. Landsat 8, Sentinel-2, PlanetScope), the original image id or granule name (e.g. ADD_SENTINEL-2_ID), and date image acquired.  For aerial imagery please provide the full title of the image collection.  For maps, provide the publisher, name of map series, sheet number, date of publication and scale.  For examles, see EXAMPLES_OF_IMAGES.
+      label: |
+      What types of source data were used to map outlines?
+      description:   |
+      Please select all that apply.
+
+      Name of data source, image id, and centroid or polygon defining the spatial extent of each source should be included as attributes for individual glacier outlines shapefile (or GeoJSON) or as a separate file.  See [New Submission Guidelines](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html) for guidelines. 
       multiple: true
       options:
-        - Satellite Imagery
-        - Aerial Imagery
-        - DEM
-        - Published Map
-        - Survey
+        - label: Satellite Imagery
+        - label: Aerial Imagery
+        - label: DEM
+        - label: Published Map
+        - label: Field Survey
     validations:
       required: true
       
@@ -180,10 +189,11 @@ body:
     id: manual_digitization
     attributes:
       label: Method of digitization
-      description: Were outlines digitized by hand? If a combination of automated and manual digitizations methods were used please answer yes and indicate the estimated percentage of manual digitization in the following section.
+      description: Were outlines digitized by hand or automatically? If outlines were created automatically and then edited by hand, please indicate the estimated percentage of manual digitization in the following section.
       options:
         - Manual
-        - Automatic (add a machine learning question)
+        - Automatic
+        - Automatic with manual editing
     validations:
       required: true
 
@@ -200,12 +210,12 @@ body:
     attributes:
       label: Type of classification used
       description: Please indicate if a supervised or unsupervised classification method was used.  This can apply to traditional classification methods (e.g. ????) or deep-learning methods.
-      multiple: true
       options:
         - Supervised
         - Unsupervised
+      default: None
     validations:
-      required: true
+      required: false
 
   - type: input
     id: supervised_title
@@ -243,3 +253,12 @@ body:
         Please enter the name of the tool or platform used for analysis, for example, ESRI ArcGIS.  Use a seperate line for each tool.
     validations:
       required: true
+
+  - type: textarea
+    id: citation
+    attributes:
+      label: Publication
+      description: |
+        Please provide the citation for any publications related to this submission, including a DOI and/or URL to the publication.  
+    validations:
+      required: false

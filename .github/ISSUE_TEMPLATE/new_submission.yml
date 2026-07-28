@@ -44,14 +44,14 @@ body:
     attributes:
       value: '# Personnel
 
-        The name of the person submitting the outlines and the names of analysts who mapped the glacier outlines.'
+        The person submitting the outlines to GLIMS is the _Submitter_.  This is usually the person completing this form.  Other people who helped with the mapping are _Analysts_.'
 
   - type: input
     id: submittor_name
     attributes:
-      label: Your Name
+      label: Submitter Name
       description: |
-        Please provide your name (surname, given name), institution, address, email
+        Please provide surname, given name, institution, address, email
 
         For example:
         `Agassiz, Louis, University of Neuchâtel, Avenue du 1er-Mars 26, CH - 2000, Neuchâtel, Neuchâtel, Canton of Neuchâtel, Switzerland`
@@ -63,7 +63,7 @@ body:
     attributes:
       label: Analysts
       description: |
-        If anyone else other than yourself contributed to mapping the glacier outlines, please add their contact information here.
+        Please add the contact information of anyone else that contributed to mapping the glacier outlines.  Use a separate line for each new analyst.
 
         For example:
         `von Humbolt, Alexander, Department of Mines, Principality of Bayreuth, Bayreuth, Germany`

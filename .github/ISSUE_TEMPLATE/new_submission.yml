@@ -145,7 +145,6 @@ body:
         Please select all that apply.
 
         Name of data source, image id, and centroid or polygon defining the spatial extent of each source should be included as attributes for individual glacier outlines shapefile (or GeoJSON) or as a separate file.  See [New Submission Guidelines](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html) for guidelines. 
-      multiple: true
       options:
         - label: Satellite Imagery
         - label: Aerial Imagery

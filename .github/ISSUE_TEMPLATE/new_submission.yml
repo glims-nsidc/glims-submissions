@@ -212,7 +212,6 @@ body:
       options:
         - Supervised
         - Unsupervised
-        - None
     validations:
       required: false
 

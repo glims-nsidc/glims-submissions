@@ -36,7 +36,7 @@ body:
     attributes:
       label: Geographic Region
       description: |
-        The common name for the geographic region containing the glacier outlines.  For country inventories please use the country name (_is there an ISO list_).  For multi-national regions, please use the commonly accepted name for this region, for example North America, European Alps, Himalaya, High Mountain Asia.  For smaller regions, please give the state, mountain range or other commonly recognized term.
+        The common name for the geographic region containing the glacier outlines.  For country inventories please use the country name.  For multi-national regions, please use the commonly accepted name for this region, for example North America, European Alps, Himalaya, High Mountain Asia.  For smaller regions, please give the state, mountain range or other commonly recognized term.
     validations:
         required: true
 

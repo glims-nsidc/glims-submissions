@@ -259,6 +259,6 @@ body:
     attributes:
       label: Publication
       description: |
-        Please provide the citation for any publications related to this submission, including a DOI and/or URL to the publication.  
+        Please provide the citation for any publications related to this submission, including a DOI and/or URL to the publication.
     validations:
       required: false

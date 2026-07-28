@@ -102,11 +102,11 @@ body:
     attributes:
       label: Data sources file names
       description: |
-        We require a list of data sources used to create outlines.  For most submissions these are a list of images, dems or maps.
+        We require information about the data sources (images, dems or maps) used to create outlines.  These sources may be included in the Glacier Outline File or as a seprate file.
 
-        Please refer to [GLIMS File Format Requirements]() for information about the file content
+        Please refer to [GLIMS Submission Guide]() for information about the file content
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: additional_files

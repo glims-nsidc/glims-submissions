@@ -140,9 +140,9 @@ body:
     id: source_type
     attributes:
       label: |
-      What types of source data were used to map outlines?
+        What types of source data were used to map outlines?
       description:   |
-      Please select all that apply.
+        Please select all that apply.
 
       Name of data source, image id, and centroid or polygon defining the spatial extent of each source should be included as attributes for individual glacier outlines shapefile (or GeoJSON) or as a separate file.  See [New Submission Guidelines](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html) for guidelines. 
       multiple: true

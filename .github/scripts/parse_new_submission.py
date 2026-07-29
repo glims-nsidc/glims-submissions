@@ -26,16 +26,17 @@ def parse_issue_body(body: str) -> dict:
       dict containing fields from issue
     """
     issue_dict = {
-        'region_center_id': parse_section(body, 'Regional Center ID')
-        'geographic_region': parse_section(body, 'Geographic Region')
-        'submitter': parse_section(body, 'Your Name')  # need to parse address
-        'analysts': parse_analysts(body)  # loop through lines
-        'outline_file': parse_section(body, 'Glacier outline file')
-        'outline_file_size': parse_section(body, 'Glacier outline file size in bytes')
-        'source_file': parse_section(body, 'Data sources file names')
-        'additional_files': parse_section(body, 'Additional files')
-        'analysis_date': parse_section(body, 'Date analysis was performed')
-        'source_data_type': parse_section(body, 'What type of source data were used to map outlines.  Please select all that apply.')
+        'region_center_id': parse_section(body, 'Regional Center ID'),
+        'geographic_region': parse_section(body, 'Geographic Region'),
+        'submitter': parse_section(body, 'Your Name'),  # need to parse address
+        'analysts': parse_analysts(body),  # loop through lines
+        'outline_file': parse_section(body, 'Glacier outline file'),
+        'outline_file_size': parse_section(body, 'Glacier outline file size in bytes'),
+        'source_file': parse_section(body, 'Data sources file names'),
+        'additional_files': parse_section(body, 'Additional files'),
+        'analysis_date': parse_section(body, 'Date analysis was performed'),
+        'source_data_type': parse_section(body, 'What type of source data were used to map outlines.  Please select all that apply.'),
+        }
 
     return issue_dict
 

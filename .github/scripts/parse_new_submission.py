@@ -35,7 +35,17 @@ def parse_issue_body(body: str) -> dict:
         'source_file': parse_section(body, 'Data sources file names'),
         'additional_files': parse_section(body, 'Additional files'),
         'analysis_date': parse_section(body, 'Date analysis was performed'),
-        'source_data_type': parse_section(body, 'What type of source data were used to map outlines.  Please select all that apply.'),
+        'source_data_type': parse_checkboxes(body, 'What type of source data were used to map outlines.  Please select all that apply.'),
+        'processing': parse_checkboxes(body, 'Processing'),
+        'mapping_process': parse_section(body, 'Please briefly describe your mapping method'),
+        'digitization_method': parse_section(body, 'Method of digitization')
+        'percent_manual_digitized': parse_section(body, 'What percentage of outlines were manually edited?'),
+        'classification_method': parse_section(body, 'Type of classification used'),
+        'supervised_method': parse_section(body, 'Type name of supervised classification method if used'),
+        'unsupervised_method': parse_section(body, 'Type name of unsupervised classification method if used'),
+        'embargo_period_months': parse_section(body, 'Embargo period'),
+        'mapping_tool': parse_section(body, 'Name of tool/platform used for mapping'),
+        'publication': parse_section(body, 'Publication'),
         }
 
     return issue_dict

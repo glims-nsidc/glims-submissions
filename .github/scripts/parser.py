@@ -28,17 +28,3 @@ def parse_checkboxes(body: str, heading: str) -> list[str]:
         if match:
             checked.append(match.group(2).strip())
     return checked
-
-
-def parse_analysts(body: str) -> list[str]:
-    """Parse analysts section of new submission issue
-    and return list of analysts.
-    
-    Arguments:
-      body : body returned from GitHub call
-
-    Returns:
-      list of analysts as string
-    """
-    analysts = parse_section(body, 'Analysts')
-    return analysts

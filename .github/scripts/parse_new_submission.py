@@ -77,6 +77,20 @@ def get_processing(body: str) -> dict:
     return result
 
 
+def parse_analysts(body: str) -> list[str]:
+    """Parse analysts section of new submission issue
+    and return list of analysts.
+
+    Arguments:
+      body : body returned from GitHub call
+
+    Returns:
+      list of analysts as string
+    """
+    analysts = parse_section(body, 'Analysts').split('\n')
+    return analysts
+
+
 def parse_issue_body(body: str) -> dict:
     """Parses the body of a new submission issues
 

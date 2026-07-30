@@ -160,7 +160,7 @@ def main():
 
     body = json.loads(body_json)
 
-    issue = parse_issue_body(body)
+    entry = parse_issue_body(body)
 
     errors = validate_fields(entry)
     if errors:
@@ -169,11 +169,11 @@ def main():
             print(f'  - {e}', flush=True)
         sys.exit(1)
 
-    print(f'Parsed entry:\n{json.dumps(issue, indent=2)}', flush=True)
+    print(f'Parsed entry:\n{json.dumps(entry, indent=2)}', flush=True)
 
-    out_path = Path('data') / f'new_submission_{issue_number}.json'
+    out_path = Path('data') / f'new_submission_{issue_number:04d}.json'
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(issue, indent=2))
+    out_path.write_text(json.dumps(entry, indent=2))
     print(f'Written to {out_path}', flush=True)
 
 

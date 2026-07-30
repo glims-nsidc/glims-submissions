@@ -103,17 +103,16 @@ def parse_issue_body(body: str) -> dict:
     issue_dict = {
         'region_center_id': parse_section(body, 'Regional Center ID'),
         'geographic_region': parse_section(body, 'Geographic Region'),
-        'submitter': parse_section(body, 'Your Name'),  # need to parse address
-        'analysts': parse_analysts(body),  # loop through lines
+        'submitter': parse_section(body, 'Submitter Name'),  # need to parse address
+        'analysts': parse_analysts(body),
         'outline_file': parse_section(body, 'Glacier outline file'),
         'outline_file_size': parse_section(body, 'Glacier outline file size in bytes'),
         'source_file': parse_section(body, 'Data sources file names'),
         'additional_files': parse_section(body, 'Additional files'),
         'analysis_date': parse_section(body, 'Date analysis was performed'),
         'source_data_type': parse_checkboxes(body, 'What type of source data were used to map outlines.  Please select all that apply.'),
-        'processing': parse_checkboxes(body, 'Processing'),
         'mapping_process': parse_section(body, 'Please briefly describe your mapping method'),
-        'digitization_method': parse_section(body, 'Method of digitization')
+        'digitization_method': parse_section(body, 'Method of digitization'),
         'percent_manual_digitized': parse_section(body, 'What percentage of outlines were manually edited?'),
         'classification_method': parse_section(body, 'Type of classification used'),
         'supervised_method': parse_section(body, 'Type name of supervised classification method if used'),
@@ -122,6 +121,7 @@ def parse_issue_body(body: str) -> dict:
         'mapping_tool': parse_section(body, 'Name of tool/platform used for mapping'),
         'publication': parse_section(body, 'Publication'),
         }
+    issue_dict = {**issue_dict, **get_processing(body)}
 
     return issue_dict
 
@@ -134,19 +134,7 @@ def main():
 
     body = json.loads(body_json)
 
-#    entry = {
-#        'issue_number': issue_number,
-#        'issue_url': issue_url,
-#        'created_at': created_at,
-#        'original_submission': parse_section(body, 'Original submission ID'),
-#        'previous_issue_link': parse_section(
-#            body, 'Link to previous submission issue/PR'
-#        ),
-#        'reason': parse_section(body, 'Reason for resubmission'),
-#        'scope': parse_checkboxes(body, 'Scope of change'),
-#        'notes': parse_section(body, 'Additional notes'),
-#    }
-
+    issue = parse_issue_body(body)
 #    errors = validate_fields(entry)
 #    if errors:
 #        print('Validation errors:', flush=True)
@@ -154,11 +142,11 @@ def main():
 #            print(f'  - {e}', flush=True)
 #        sys.exit(1)
 
-    print(f'Parsed entry:\n{json.dumps(body, indent=2)}', flush=True)
+    print(f'Parsed entry:\n{json.dumps(issue, indent=2)}', flush=True)
 
-    out_path = Path('data') / f'resubmission_{issue_number}.json'
+    out_path = Path('data') / f'new_submission_{issue_number}.json'
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(body, indent=2))
+    out_path.write_text(json.dumps(issue, indent=2))
     print(f'Written to {out_path}', flush=True)
 
 

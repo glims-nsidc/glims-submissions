@@ -125,7 +125,33 @@ def parse_issue_body(body: str) -> dict:
 
     return issue_dict
 
-    
+
+def validate_fields(entry: dict) -> list[str]:
+    """Return list of validation error messages for missing
+    required fields
+
+    Arguments:
+      entry : dictionary of parsed submission fields
+
+    Returns:
+      List of error messages
+    """
+    required_fields = [
+        'region_center_id',
+        'geographic_region',
+        'submitter',
+        'outline_file',
+        'analysis_date',
+        ]
+
+    errors = [
+        f'{field} is required but was not found.'
+        for field in required_fields if not entry.get(field)
+        ]
+
+    return errors
+
+
 def main():
     body_json = os.environ['ISSUE_BODY']
     issue_number = int(os.environ['ISSUE_NUMBER'])
@@ -135,12 +161,13 @@ def main():
     body = json.loads(body_json)
 
     issue = parse_issue_body(body)
-#    errors = validate_fields(entry)
-#    if errors:
-#        print('Validation errors:', flush=True)
-#        for e in errors:
-#            print(f'  - {e}', flush=True)
-#        sys.exit(1)
+
+    errors = validate_fields(entry)
+    if errors:
+        print('Validation errors:', flush=True)
+        for e in errors:
+            print(f'  - {e}', flush=True)
+        sys.exit(1)
 
     print(f'Parsed entry:\n{json.dumps(issue, indent=2)}', flush=True)
 

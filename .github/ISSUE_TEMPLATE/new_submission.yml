@@ -160,19 +160,19 @@ body:
       label: "Processing"
       description: Please check all processing steps applied to data sources before mapping outlines.
       options:
-        - label: Was image transformed from latitude, longitude to projected coordinates? (geocoding_with_image)
-        - label: Was image converted from image coordinates to geographic coordinates? (georegistration_gpcs)
-        - label: Was image orthorectified? (orthorectification_dem_dtm)
-        - label: Was image DN converted to radiance? (dn_radiance_conversion)
-        - label: Was image corrected for solar geometry? (sun_elev_correction)
-        - label: Was image radiometrically corrected? (image_radiometric_correction)
-        - label: Was a model radiometric correction applied? (model_radiometric_correction)
-        - label: Was image corrected for anisotropic reflectance? (anisotropic_reflectance)
-        - label: Was a terrain correction applied? (slope_aspect_correction)
-        - label: Was a band ratio or linear transform used? (band_ratio_linear_trans)
-        - label: (spatial_filtering)
-        - label: (geomorphological_analysis)
-        - label: (texture_analysis)
+        - label: Was image transformed from latitude, longitude to projected coordinates?
+        - label: Was image converted from image coordinates to geographic coordinates?
+        - label: Was image orthorectified?
+        - label: Was image DN converted to radiance?
+        - label: Was image corrected for solar geometry?
+        - label: Was image radiometrically corrected?
+        - label: Was a model radiometric correction applied?
+        - label: Was image corrected for anisotropic reflectance?
+        - label: Was a terrain correction applied?
+        - label: Was a band ratio or linear transform used?
+        - label: Was spatial filtering used?
+        - label: Was geomorphological analysis used?
+        - label: Was texture analysis used?
     validations:
       required: false
 

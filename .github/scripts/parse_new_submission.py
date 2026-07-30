@@ -15,6 +15,67 @@ import re
 import sys
 from pathlib import Path
 
+from parser import parse_section, parse_checkboxes
+
+
+def get_data_source_type(body: str) -> dict:
+    """Return dict of data source types used in analysis"""
+    data_source = parse_checkboxes(
+        body,
+        'What types of source data were used to map outlines?'
+        )
+    return data_source
+
+
+def get_processing(body: str) -> dict:
+    """Return processing 
+
+    Arguments:
+      body : body returned from New Submisson issue
+
+    Returns:
+      dict of processing applied to image
+
+    
+    transform_to_projected_coordinates: a transformation from geographic to projected coordinates was performed
+    georegistration_with_gcps: image was georegistered using ground control points
+    orthorectified: image was corrected for topographic distortion
+    radiometric_calibration: convert raw sensor DN to at sensor radiances 
+    solar_geometry_correction: surface radiance corrected for solar geometry to get reflectance of a flat surface(?)
+    image_radiometric_correction: atmospheric parameters estimated from the image
+    model_radiometric_correction: atmospheric model used for correction
+    anisotropic_reflectance_correction: non-Lambertian surface reflectance accounted for  
+    slope_aspect_correction: surface radiance corrected for topography
+    band_ratio_transformation: band ratio applied to image data 
+    spatial_filtering_applied: spatial filter applied to image 
+    geomorphological_analysis: surface topography evaluated
+    texture_analysis: spatial variation in gray levels or brightness calculated
+    """
+
+    lookup = {
+        'Was image transformed from latitude, longitude to projected coordinates?': 'transform_to_projected_coordinates',
+        'Was image converted from image coordinates to geographic coordinates?': 'georegistration_with_gcps',
+        'Was image orthorectified?': 'orthorectified',
+        'Was image DN converted to radiance?': 'radiometric_calibration',
+        'Was image corrected for solar geometry?': 'solar_geometry_correction',
+        'Was image radiometrically corrected?': 'image_radiometric_correction',
+        'Was a model radiometric correction applied?': 'model_radiometric_correction',
+        'Was image corrected for anisotropic reflectance?': 'anisotropic_reflectance_correction',
+        'Was a terrain correction applied?': 'slope_aspect_correction',
+        'Was a band ratio or linear transform used?': 'band_ratio_transformation',
+        'Was spatial filtering used?': 'spatial_filtering_applied',
+        'Was geomorphological analysis used?': 'geomorphological_analysis',
+        'Was texture analysis used?': 'texture_analysis',
+        }
+
+    processing = parse_checkboxes(body, 'Processing')
+    result = {
+        v: (True if k in processing else False)
+        for k, v in lookup.items()
+        }
+
+    return result
+
 
 def parse_issue_body(body: str) -> dict:
     """Parses the body of a new submission issues

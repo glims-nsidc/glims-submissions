@@ -50,7 +50,7 @@ body:
         - Instrument/session info correction
         - Analyst assignment correction
         - New or corrected data from submitter
-        - Other (explain in notes)
+        - Explain in "Additional notes section"
     validations:
       required: true
 

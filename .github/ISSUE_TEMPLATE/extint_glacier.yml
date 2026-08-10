@@ -15,6 +15,7 @@ body:
         If different glaciers have different disappearance dates or sources, please open a separate issue for each group.
 
         For a description of the submission process and the information required, please see [Submitting Extinct Glaciers to GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_extinct_glaciers.html)
+ 
   - type: textarea
     id: glacier_ids
     attributes:

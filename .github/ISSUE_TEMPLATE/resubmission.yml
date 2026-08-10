@@ -1,16 +1,32 @@
 name: Glacier Ingest Resubmission/Correction
 description: Edit or resubmit a previously submitted glims ingest.
-title: "Ingest Resubmission/Correction: "
+title: "[Correction]: "
 labels:
   - "resubmission"
 projects: ["glims-nsidc/projects/1"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request that one or more submission be revised. Before opening a re-submission, identify the submission that needs to be corrected. 
+        You will need:
+        
+        * The original submission ID (the Submission_Info ID in the GLIMS database)
+        * The RC ID or region label associated with the original submission
+        * A link to the GitHub issue or documentation from the original submission
+        
+        For the issue title, please include your name as the submitter, the name of the country or region containing your outlines and the year or years of the outlines.
+        
+        For example, "[Correction]: Agassiz, glacier outlines of Switzerland, 1840”.
+
+        For a description of the correction process and the information required, please see [Re-submit Glacier Outlines or Correction to GLIMS
+](https://glims-submissions-docs.readthedocs.io/en/latest/re_submitting.html)
 
   - type: input
     id: original-submission
     attributes:
       label: Original submission ID
-      description: Submission_Info ID, RC ID, or other identifier for the submission being corrected/resubmitted.
+      description: The Submission_Info ID, RC ID, or other identifier for the submission(s) being corrected or resubmitted.
       placeholder: "e.g. submission 880, RC ID NO-..."
     validations:
       required: true
@@ -19,7 +35,7 @@ body:
     id: previous-issue-link
     attributes:
       label: Link to previous submission issue/PR
-      description: URL to the GitHub issue or PR for the original submission.
+      description: The URL of the GitHub issue for the original submission, if available. This helps the analyst quickly pull up the full history of the original request. Trello link or documentation from prior emails is also acceptable here as this transition to github is still ongoing.
       placeholder: "https://github.com/glims-nsidc/.../issues/..."
     validations:
       required: false
@@ -57,3 +73,9 @@ body:
       description: Any context useful for the analyst processing this request — why this is happening, what changed, anything unusual about the original ingest.
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: '# After Submission
+
+        Once submitted, the re-submission will be reviewed by the NSIDC DAAC team. You may be contacted with questions before the data are revised. The records will be visible in the GLIMS Glacier Viewer as soon as they are updated.'

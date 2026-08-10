@@ -8,19 +8,18 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this form to request that one or more submission be revised. Before opening a re-submission, identify the submission that needs to be corrected. 
+        Use this form to request that one or more submission be revised. Before opening a re-submission, identify the submission that needs to be corrected.
         You will need:
-        
+
         * The original submission ID (the Submission_Info ID in the GLIMS database)
         * The RC ID or region label associated with the original submission
         * A link to the GitHub issue or documentation from the original submission
-        
-        For the issue title, please include your name as the submitter, the name of the country or region containing your outlines and the year or years of the outlines.
-        
-        For example, "[Correction]: Agassiz, glacier outlines of Switzerland, 1840”.
 
-        For a description of the correction process and the information required, please see 
-        [Re-submit Glacier Outlines or Correction to GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/re_submitting.html)
+        For the issue title, please include your name as the submitter, the name of the country or region containing your outlines and the year or years of the outlines.
+
+        For example, "[Correction]: Agassiz, glacier outlines of Switzerland, 1840".
+
+        For a description of the correction process and the information required, please see [Re-submit Glacier Outlines or Correction to GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/re_submitting.html)
 
   - type: input
     id: original-submission
@@ -76,6 +75,7 @@ body:
 
   - type: markdown
     attributes:
-      value: '# After Submission
+      value: |
+        # After Submission
 
-        Once submitted, the re-submission will be reviewed by the NSIDC DAAC team. You may be contacted with questions before the data are revised. The records will be visible in the GLIMS Glacier Viewer as soon as they are updated.'
+        Once submitted, the re-submission will be reviewed by the NSIDC DAAC team. You may be contacted with questions before the data are revised. The records will be visible in the GLIMS Glacier Viewer as soon as they are updated.

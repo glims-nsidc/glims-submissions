@@ -29,7 +29,7 @@ body:
     id: est_disappear_date
     attributes:
       label: Estimated disappearance date (`est_disappear_date`)
-      description: best estimate of when the glacier disappeared, in ISO 8601 format (YYYY-MM-DD). The date of disappearance should be the date that the glacier was observed to be gone in the field, or the date of the image that was used to determine it was gone.
+      description: Best estimate of when the glacier disappeared, in ISO 8601 format (YYYY-MM-DD). The date of disappearance should be the date that the glacier was observed to be gone in the field, or the date of the image that was used to determine it was gone.
     validations:
       required: true
 
@@ -37,7 +37,7 @@ body:
     id: est_disappear_unc
     attributes:
       label: Disappearance date uncertainty in days (`est_disappear_unc`)
-      description: he uncertainty in the disappearance date, expressed as an integer number of days. This uncertainty can be estimated as the number of days between the last date the glacier was observed and the Estimated disappearance date. Where the date last observed can be an observation in the field or the existence of the glacier in a previous inventory.
+      description: The uncertainty in the disappearance date, expressed as an integer number of days. This uncertainty can be estimated as the number of days between the last date the glacier was observed and the Estimated disappearance date. Where the date last observed can be an observation in the field or the existence of the glacier in a previous inventory.
     validations:
       required: true
 
@@ -45,7 +45,7 @@ body:
     id: gone_source
     attributes:
       label: Source (`gone_source`)
-      description: Attribution for the disappearance determination. This should include the name of the person who made the determination, their institution, and/or a relevant publication DOI or image ID. For example: Jane Doe (University of X), Landsat 8 image LC08_L1TP_XYZ_20200901 or Doe et al. 2023, https://doi.org/10.xxxx/xxxxx.
+      description: Attribution for the disappearance determination. This should include the name of the person who made the determination, their institution, and/or a relevant publication DOI or image ID. For example: Jane Doe (University of X), Landsat 8 image LC08_L1TP_XYZ_20200901 or Doe et al. 2023, https://doi.org/10.xxxx/xxxxx. 
     validations: 
       required: true
   

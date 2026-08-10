@@ -86,6 +86,6 @@ body:
 
   - type: markdown
     attributes:
-      value: `# After Submission
+      value: '# After Submission
 
-        Once submitted, the issue will be reviewed by the NSIDC DAAC team. You may be contacted with questions before the data are ingested. Once reviewed, the `glacier_status` field for each glacier will be updated to `gone` in the Glacier Database, and the records will be visible in the GLIMS Glacier Viewer under the extinct glaciers layer.`
+        Once submitted, the issue will be reviewed by the NSIDC DAAC team. You may be contacted with questions before the data are ingested. Once reviewed, the `glacier_status` field for each glacier will be updated to `gone` in the Glacier Database, and the records will be visible in the GLIMS Glacier Viewer under the extinct glaciers layer.'

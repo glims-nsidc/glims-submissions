@@ -1,6 +1,6 @@
 name: Extinct Glacier
 description: Submit one or more glaciers to be marked as extinct in the GLIMS database.
-title: "[Extinct glacier submission] "
+title: "[Extinct glacier(s)]:"
 labels:
   - "extinct glacier"
 projects: ["glims-nsidc/projects/1"]
@@ -11,6 +11,7 @@ body:
         Use this form to request that one or more glaciers be marked as extinct (`glacier_status = 'gone'`) in `glacier_static`. Provide one GLIMS glacier ID per line in the field below, along with the disappearance metadata that applies to all listed glaciers.
         
         For the issue title, please include your name as the submitter, the name of the country or region of the extinct glaciers.
+        For example: "[Extinct Glacier(s)]: Hodel,  Swiss Alps".
 
         If different glaciers have different disappearance dates or sources, please open a separate issue for each group.
 

@@ -45,7 +45,12 @@ body:
     id: gone_source
     attributes:
       label: Source (`gone_source`)
-      description: Attribution for the disappearance determination. This should include the name of the person who made the determination, their institution, and/or a relevant publication DOI or image ID. For example: Jane Doe (University of X), Landsat 8 image LC08_L1TP_XYZ_20200901 or Doe et al. 2023, https://doi.org/10.xxxx/xxxxx. 
+      description: >-
+        Attribution for the disappearance determination. This should include
+        the name of the person who made the determination, their institution,
+        and/or a relevant publication DOI or image ID. For example: Jane Doe
+        (University of X), Landsat 8 image LC08_L1TP_XYZ_20200901 or Doe et
+        al. 2023, https://doi.org/10.xxxx/xxxxx.
     validations: 
       required: true
   

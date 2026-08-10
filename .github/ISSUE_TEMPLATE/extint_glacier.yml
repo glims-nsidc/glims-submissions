@@ -20,7 +20,7 @@ body:
     id: glacier_ids
     attributes:
       label: Glacier IDs
-      description: One GLIMS glacier ID per line, or attach a file (.txt, .csv, or .xlsx). For text and CSV files, one ID per line or per cell in the first column. For Excel files, IDs in the first column of the first sheet.
+      description: The unique identifier assigned to the glacier in the GLIMS database (e.g., G006813E46133N). One GLIMS glacier ID per line, or attach a file (.txt, .csv, or .xlsx). For text and CSV files, one ID per line or per cell in the first column. For Excel files, IDs in the first column of the first sheet.
 
     validations:
       required: true
@@ -29,7 +29,7 @@ body:
     id: est_disappear_date
     attributes:
       label: Estimated disappearance date (`est_disappear_date`)
-      description: Best estimate of when the glacier disappeared. Use ISO format `YYYY-MM-DD`. Day and month may be approximate.
+      description:best estimate of when the glacier disappeared, in ISO 8601 format (YYYY-MM-DD). The date of disappearance should be the date that the glacier was observed to be gone in the field, or the date of the image that was used to determine it was gone.
     validations:
       required: true
 
@@ -37,7 +37,7 @@ body:
     id: est_disappear_unc
     attributes:
       label: Disappearance date uncertainty in days (`est_disappear_unc`)
-      description: Integer number of days of uncertainty around the disappearance date.
+      description: he uncertainty in the disappearance date, expressed as an integer number of days. This uncertainty can be estimated as the number of days between the last date the glacier was observed and the Estimated disappearance date. Where the date last observed can be an observation in the field or the existence of the glacier in a previous inventory.
     validations:
       required: true
 
@@ -45,8 +45,7 @@ body:
     id: gone_source
     attributes:
       label: Source (`gone_source`)
-      description: Attribution for the disappearance determination — submitter name, institution, and/or DOI.
-    validations:
+      description: Attribution for the disappearance determination. This should include the name of the person who made the determination, their institution, and/or a relevant publication DOI or image ID. For example: Jane Doe (University of X), Landsat 8 image LC08_L1TP_XYZ_20200901 or Doe et al. 2023, https://doi.org/10.xxxx/xxxxx.
       required: true
   
   - type: dropdown
@@ -67,7 +66,7 @@ body:
     id: glims_added_extinct_date
     attributes:
       label: Date added to GLIMS as extinct (`glims_added_extinct_date`)
-      description: Leave blank to default to today's date when the SQL is generated.
+      description: The date on which you are submitting this information (YYYY-MM-DD). If left blank, today’s date will be used.
     validations:
       required: false
 

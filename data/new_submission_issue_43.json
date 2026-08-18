@@ -1,0 +1,89 @@
+{
+  "url": "https://api.github.com/repos/glims-nsidc/glims-submissions/issues/43",
+  "repository_url": "https://api.github.com/repos/glims-nsidc/glims-submissions",
+  "labels_url": "https://api.github.com/repos/glims-nsidc/glims-submissions/issues/43/labels{/name}",
+  "comments_url": "https://api.github.com/repos/glims-nsidc/glims-submissions/issues/43/comments",
+  "events_url": "https://api.github.com/repos/glims-nsidc/glims-submissions/issues/43/events",
+  "html_url": "https://github.com/glims-nsidc/glims-submissions/issues/43",
+  "id": 5004044854,
+  "node_id": "I_kwDOR7VByM8AAAABKkOqNg",
+  "number": 43,
+  "title": "[New Submission]: Barrett, Test Submission, 2026",
+  "user": {
+    "login": "andypbarrett",
+    "id": 2358591,
+    "node_id": "MDQ6VXNlcjIzNTg1OTE=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/2358591?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andypbarrett",
+    "html_url": "https://github.com/andypbarrett",
+    "followers_url": "https://api.github.com/users/andypbarrett/followers",
+    "following_url": "https://api.github.com/users/andypbarrett/following{/other_user}",
+    "gists_url": "https://api.github.com/users/andypbarrett/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/andypbarrett/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/andypbarrett/subscriptions",
+    "organizations_url": "https://api.github.com/users/andypbarrett/orgs",
+    "repos_url": "https://api.github.com/users/andypbarrett/repos",
+    "events_url": "https://api.github.com/users/andypbarrett/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/andypbarrett/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "labels": [
+    {
+      "id": 10643926602,
+      "node_id": "LA_kwDOR7VByM8AAAACem1uSg",
+      "url": "https://api.github.com/repos/glims-nsidc/glims-submissions/labels/new%20submission",
+      "name": "new submission",
+      "color": "3faa23",
+      "default": false,
+      "description": "submission of a new glacier outline to be ingested into the glims databse"
+    }
+  ],
+  "state": "open",
+  "locked": false,
+  "assignees": [
+
+  ],
+  "milestone": null,
+  "comments": 0,
+  "created_at": "2026-07-29T00:05:28Z",
+  "updated_at": "2026-07-29T00:05:28Z",
+  "closed_at": null,
+  "author_association": "CONTRIBUTOR",
+  "issue_field_values": [
+
+  ],
+  "type": null,
+  "active_lock_reason": null,
+  "sub_issues_summary": {
+    "total": 0,
+    "completed": 0,
+    "percent_completed": 0
+  },
+  "issue_dependencies_summary": {
+    "blocked_by": 0,
+    "total_blocked_by": 0,
+    "blocking": 0,
+    "total_blocking": 0
+  },
+  "body": "### Regional Center ID\n\n11\n\n### Geographic Region\n\nSwitzerland\n\n### Submitter Name\n\nBarrett, Andrew, National Snow and Ice Data Center, University of Colorado at Boulder, Boulder, CO, USA\n\n### Analysts\n\nJohn Cleese, Department of Silly Walks, University of the Ridiculous, 1 Flying Circus Road, Little Dribbling, UK\n\n### Glacier outline file\n\nsilly_outlines.shp\n\n### Glacier outline file size in bytes\n\n100000\n\n### Data sources file names\n\n_No response_\n\n### Additional files\n\n_No response_\n\n### Date analysis was performed\n\n2026-07-28\n\n### What types of source data were used to map outlines?\n\n\n- [x] Satellite Imagery\n- [ ] Aerial Imagery\n- [x] DEM\n- [ ] Published Map\n- [ ] Field Survey\n\n### Processing\n\n- [ ] Was image transformed from latitude, longitude to projected coordinates? (geocoding_with_image)\n- [ ] Was image converted from image coordinates to geographic coordinates? (georegistration_gpcs)\n- [ ] Was image orthorectified? (orthorectification_dem_dtm)\n- [ ] Was image DN converted to radiance? (dn_radiance_conversion)\n- [ ] Was image corrected for solar geometry? (sun_elev_correction)\n- [ ] Was image radiometrically corrected? (image_radiometric_correction)\n- [ ] Was a model radiometric correction applied? (model_radiometric_correction)\n- [ ] Was image corrected for anisotropic reflectance? (anisotropic_reflectance)\n- [ ] Was a terrain correction applied? (slope_aspect_correction)\n- [x] Was a band ratio or linear transform used? (band_ratio_linear_trans)\n- [ ] (spatial_filtering)\n- [ ] (geomorphological_analysis)\n- [ ] (texture_analysis)\n\n### Please briefly describe your mapping method\n\nHand digitizing from Sentinel-2 and Arctic DEM\n\n### Method of digitization\n\nManual\n\n### What percentage of outlines were manually edited?\n\n100\n\n### Type of classification used\n\nNone\n\n### Type name of supervised classification method if used\n\n_No response_\n\n### Type name of unsupervised classification method if used\n\n_No response_\n\n### Embargo period\n\n0\n\n### Name of tool/platform used for mapping\n\nPlane table\n\n### Publication\n\nBarrett, A.P.  and J. Cleese, 2026, Charting the demise of Silly Glacier, Journal of Codswallop",
+  "closed_by": null,
+  "reactions": {
+    "url": "https://api.github.com/repos/glims-nsidc/glims-submissions/issues/43/reactions",
+    "total_count": 0,
+    "+1": 0,
+    "-1": 0,
+    "laugh": 0,
+    "hooray": 0,
+    "confused": 0,
+    "heart": 0,
+    "rocket": 0,
+    "eyes": 0
+  },
+  "timeline_url": "https://api.github.com/repos/glims-nsidc/glims-submissions/issues/43/timeline",
+  "performed_via_github_app": null,
+  "state_reason": null,
+  "pinned_comment": null
+}

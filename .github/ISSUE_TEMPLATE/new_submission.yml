@@ -16,7 +16,7 @@ body:
     attributes:
       value: '# Update Title  
       
-        Please update the title field by changing the text within `<>`, with your name as the _Submitter_, the name of the _Country_ or _Region_ containing your outlines, and the year or range of years of the outlines.  
+        Please update the title field by changing the text within `<>`, with your name as the _Submitter_, the name of the _Country_ or _Region_ containing your outlines, and the _Year_ or _Range of Years_ of the outlines.  
 
 
         For example, "[New Submission]: Agassiz, glacier outlines of Switzerland, 1840”.'

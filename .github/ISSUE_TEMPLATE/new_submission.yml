@@ -181,7 +181,8 @@ body:
     id: process_description
     attributes:
       label: Please briefly describe your mapping method
-      placeholder: "Example: Semi-automatic mapping from Landsat satellite images and SRTM digital elevation model"
+      description: Provide a single sentence that describes the mapping method (manual, semi-automated, automated) and the sources used for mapping.
+      placeholder: "Example: Semi-automated mapping from Landsat satellite images and SRTM digital elevation model"
     validations:
       required: true
 

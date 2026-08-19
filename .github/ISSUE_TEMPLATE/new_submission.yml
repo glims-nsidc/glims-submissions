@@ -14,9 +14,9 @@ body:
 
   - type: markdown
     attributes:
-      value: '# Update Title
+      value: '# Update Title  
       
-        Please update the title field, with your name as the _submitter_, the name of the country or region containing your outlines and the year or years of the outlines.
+        Please update the title field by changing the text within `<>`, with your name as the _submitter_, the name of the country or region containing your outlines and the year or years of the outlines.  
 
         For example, "[New Submission]: Agassiz, glacier outlines of Switzerland, 1840”.'
 

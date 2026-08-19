@@ -1,6 +1,6 @@
 name: New Submission
 description: Start a new submission of glacier outlines to the GLIMS database
-title: "[New Submission]: "
+title: "[New Submission]: <Submitters Name>, glaciers outlines of <Region>, <List of Years>"
 labels:
   - "new submission"
 projects: ["glims-nsidc/projects/1"]
@@ -10,11 +10,12 @@ body:
       value: |
         Use this form to start a new submission of one or more glacier outlines to the GLIMS Glacier Database.
 
-        For the submission title, please include your name as the _submitter_, the name of the country or region containing your outlines and the year or years of the outlines.
+        For a description of the submission process and the information and files required for a submission, please see [How to submit new glacier outlines to the GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html)
+
+        Please update the title field, with your name as the _submitter_, the name of the country or region containing your outlines and the year or years of the outlines.
 
         For example, "[New Submission]: Agassiz, glacier outlines of Switzerland, 1840”.
 
-        For a description of the submission process and the information and files required for a submission, please see [How to submit new glacier outlines to the GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html)
 
   - type: markdown
     attributes:

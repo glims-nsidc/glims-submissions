@@ -12,10 +12,13 @@ body:
 
         For a description of the submission process and the information and files required for a submission, please see [How to submit new glacier outlines to the GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html)
 
+  - type: markdown
+    attributes:
+      value: '# Update Title
+      
         Please update the title field, with your name as the _submitter_, the name of the country or region containing your outlines and the year or years of the outlines.
 
-        For example, "[New Submission]: Agassiz, glacier outlines of Switzerland, 1840”.
-
+        For example, "[New Submission]: Agassiz, glacier outlines of Switzerland, 1840”.'
 
   - type: markdown
     attributes:

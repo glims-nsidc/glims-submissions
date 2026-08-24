@@ -1,6 +1,6 @@
 name: Extinct Glacier
 description: Submit one or more glaciers to be marked as extinct in the GLIMS database.
-title: "[Extinct glacier(s)]: "<Submitters Name>, glaciers outlines of <Region>"
+title: "[Extinct glacier(s)]: <Submitters Name>, glaciers outlines of <Region>"
 labels:
   - "extinct glacier"
 projects: ["glims-nsidc/projects/1"]

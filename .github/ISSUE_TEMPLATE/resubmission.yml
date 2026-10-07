@@ -1,6 +1,6 @@
 name: Glacier Ingest Resubmission/Correction
 description: Edit or resubmit a previously submitted glims ingest.
-title: "[Correction]: "
+title: "[Correction]: <Submitters Name>, glaciers outlines of <Region>, <List or Range of Years>"
 labels:
   - "resubmission"
 projects: ["glims-nsidc/projects/1"]

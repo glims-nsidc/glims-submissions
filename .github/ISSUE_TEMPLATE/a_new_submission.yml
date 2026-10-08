@@ -162,8 +162,8 @@ body:
   - type: checkboxes
     id: processing
     attributes:
-      label: "Processing"
-      description: Please check all processing steps applied to data sources before mapping outlines.
+      label: "Post-Processing Applied to Data Sources"
+      description: Please check all post-processing steps applied to data sources (e.g. images) before mapping outlines.
       options:
         - label: Image transformed from latitude, longitude to projected coordinates.
         - label: Image converted from image coordinates to geographic coordinates.

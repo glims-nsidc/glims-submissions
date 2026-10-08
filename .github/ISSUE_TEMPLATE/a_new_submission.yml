@@ -270,16 +270,15 @@ body:
 
 - type: markdown
     attributes:
-      value: '# Next Steps
+      value: |
+        # Next Steps  
 
         Thank you for completing this submission form.  
         
-        Someone from the GLIMS team at NSIDC will send an email to the email-address associated with your Github account 
-        with instructions to upload your glacier outline file(s) and any ancilliary files.
+        Someone from the GLIMS team at NSIDC will send an email to the email-address associated with your Github account with instructions to upload your glacier outline file(s) and any ancilliary files.  
         
-        We will review those files and will contact you via this issue on Github with any questions or requests for more information.
+        We will review those files and will contact you via this issue on Github with any questions or requests for more information.  
         
-        Also feel free to contact us by adding a comment to this issue.  If you have forgotten any information or want to correct any 
-        information you have provided, you can also add a comment to this issue.
+        Also feel free to contact us by adding a comment to this issue.  If you have forgotten any information or want to correct any information you have provided, you can also add a comment to this issue.  
         
         You can now click the blue CREATE button to create you new submission issue.'

@@ -28,6 +28,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/resubmission_${{ github.event.issue.number }}.json
+          git add data/new_submission_${{ github.event.issue.number }}.json
           git diff --cached --quiet || git commit -m "Add new_submission_${{ github.event.issue.number }}.json"
           git push

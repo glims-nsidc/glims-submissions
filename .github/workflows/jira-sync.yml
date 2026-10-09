@@ -10,7 +10,6 @@ on:
         description: Issue number to create a Jira ticket for
         required: true
 
-
 jobs:
   create-jira-issue:
     runs-on: ubuntu-latest
@@ -33,14 +32,21 @@ jobs:
           echo "title=$(jq -r .title issue.json)" >> "$GITHUB_OUTPUT"
           echo "url=$(jq -r .url issue.json)" >> "$GITHUB_OUTPUT"
 
+      - name: Login to Jira
+        uses: atlassian/gajira-login@v3
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
       - name: Create Jira Issue
         id: create
         uses: atlassian/gajira-create@v3
         with:
           project: DPT
           issuetype: Story
-          summary: "${{ github.event.issue.title }}"
-          description: "Synced from GitHub issue: ${{ github.event.issue.html_url }}"
+          summary: "${{ steps.issue.outputs.title }}"
+          description: "Synced from GitHub issue: ${{ steps.issue.outputs.url }}"
           fields: |
             {
               "labels": ["nsidc0272"],
@@ -54,6 +60,6 @@ jobs:
             github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `Jira ticket created: ${{ steps.create.outputs.issue }}`
+              issue_number: ${{ steps.issue.outputs.number }},
+              body: `Jira ticket created: ${{ steps.issue.outputs.number && steps.create.outputs.issue }}`
             })

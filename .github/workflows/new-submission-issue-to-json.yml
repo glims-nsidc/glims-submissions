@@ -1,33 +1,46 @@
-name: Parse new submission issue to JSON
-
 on:
   issues:
     types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to process
+        required: true
 
 jobs:
   parse-to-json:
-    if: contains(github.event.issue.labels.*.name, 'new submission')
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.issue.labels.*.name, 'new submission')
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
+      issues: read
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v6
 
-      - name: Parse issue and write JSON
+      - name: Get issue data
+        id: issue
         env:
-          ISSUE_BODY: ${{ toJSON(github.event.issue.body) }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_URL: ${{ github.event.issue.html_url }}
-          CREATED_AT: ${{ github.event.issue.created_at }}
-        run: python .github/scripts/parse_new_submission.py
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ inputs.issue_number || github.event.issue.number }}
+        run: |
+          gh issue view "$NUMBER" --repo "$GITHUB_REPOSITORY" --json body,number,url,createdAt > issue.json
+
+      - name: Parse issue and write JSON
+        run: |
+          export ISSUE_BODY=$(jq '.body' issue.json)
+          export ISSUE_NUMBER=$(jq -r '.number' issue.json)
+          export ISSUE_URL=$(jq -r '.url' issue.json)
+          export CREATED_AT=$(jq -r '.createdAt' issue.json)
+          python .github/scripts/parse_new_submission.py
 
       - name: Commit JSON
         run: |
+          N=$(jq -r '.number' issue.json)
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/new_submission_${{ github.event.issue.number }}.json
-          git diff --cached --quiet || git commit -m "Add new_submission_${{ github.event.issue.number }}.json"
+          git add data/new_submission_${N}.json
+          git diff --cached --quiet || git commit -m "Add new_submission_${N}.json"
+          git pull --rebase
           git push

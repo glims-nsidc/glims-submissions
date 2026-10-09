@@ -16,12 +16,16 @@ jobs:
       contains(github.event.issue.labels.*.name, 'new submission') ||
       contains(github.event.issue.labels.*.name, 'extinct glacier')
     steps:
-      - name: Login to Jira
-        uses: atlassian/gajira-login@v3
+      - name: Get issue
+        id: issue
         env:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ inputs.issue_number || github.event.issue.number }}
+        run: |
+          gh issue view "$NUMBER" --repo "$GITHUB_REPOSITORY" --json number,title,url > issue.json
+          echo "number=$(jq -r .number issue.json)" >> "$GITHUB_OUTPUT"
+          echo "title=$(jq -r .title issue.json)" >> "$GITHUB_OUTPUT"
+          echo "url=$(jq -r .url issue.json)" >> "$GITHUB_OUTPUT"
 
       - name: Create Jira Issue
         id: create

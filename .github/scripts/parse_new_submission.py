@@ -52,23 +52,24 @@ def get_processing(body: str) -> dict:
     texture_analysis: spatial variation in gray levels or brightness calculated
     """
 
+    # Keys must match the option labels in the issue form exactly
     lookup = {
-        'Was image transformed from latitude, longitude to projected coordinates?': 'transform_to_projected_coordinates',
-        'Was image converted from image coordinates to geographic coordinates?': 'georegistration_with_gcps',
-        'Was image orthorectified?': 'orthorectified',
-        'Was image DN converted to radiance?': 'radiometric_calibration',
-        'Was image corrected for solar geometry?': 'solar_geometry_correction',
-        'Was image radiometrically corrected?': 'image_radiometric_correction',
-        'Was a model radiometric correction applied?': 'model_radiometric_correction',
-        'Was image corrected for anisotropic reflectance?': 'anisotropic_reflectance_correction',
-        'Was a terrain correction applied?': 'slope_aspect_correction',
-        'Was a band ratio or linear transform used?': 'band_ratio_transformation',
-        'Was spatial filtering used?': 'spatial_filtering_applied',
-        'Was geomorphological analysis used?': 'geomorphological_analysis',
-        'Was texture analysis used?': 'texture_analysis',
+        'Image transformed from latitude, longitude to projected coordinates.': 'transform_to_projected_coordinates',
+        'Image converted from image coordinates to geographic coordinates.': 'georegistration_with_gcps',
+        'Image orthorectified.': 'orthorectified',
+        'Image DN converted to radiance.': 'radiometric_calibration',
+        'Image radiance corrected for solar geometry.': 'solar_geometry_correction',
+        'Image radiometrically corrected.': 'image_radiometric_correction',
+        'Model radiometric correction applied.': 'model_radiometric_correction',
+        'Image corrected for anisotropic reflectance.': 'anisotropic_reflectance_correction',
+        'Terrain correction applied.': 'slope_aspect_correction',
+        'Band ratio or linear transform applied.': 'band_ratio_transformation',
+        'Spatial filtering applied.': 'spatial_filtering_applied',
+        'Geomorphological analysis used.': 'geomorphological_analysis',
+        'Texture analysis used.': 'texture_analysis',
         }
 
-    processing = parse_checkboxes(body, 'Processing')
+    processing = parse_checkboxes(body, 'Post-Processing Applied to Data Sources')
     result = {
         v: (True if k in processing else False)
         for k, v in lookup.items()
@@ -85,9 +86,13 @@ def parse_analysts(body: str) -> list[str]:
       body : body returned from GitHub call
 
     Returns:
-      list of analysts as string
+      list of analysts as string, empty if the field was left blank
     """
-    analysts = parse_section(body, 'Analysts').split('\n')
+    section = parse_section(body, 'Analysts') or ''
+    analysts = [
+        line.strip() for line in section.split('\n')
+        if line.strip() and line.strip() != '_No response_'
+        ]
     return analysts
 
 
@@ -110,7 +115,7 @@ def parse_issue_body(body: str) -> dict:
         'source_file': parse_section(body, 'Data sources file names'),
         'additional_files': parse_section(body, 'Additional files'),
         'analysis_date': parse_section(body, 'Date analysis was performed'),
-        'source_data_type': parse_checkboxes(body, 'What type of source data were used to map outlines.  Please select all that apply.'),
+        'source_data_type': get_data_source_type(body),
         'mapping_process': parse_section(body, 'Please briefly describe your mapping method'),
         'digitization_method': parse_section(body, 'Method of digitization'),
         'percent_manual_digitized': parse_section(body, 'What percentage of outlines were manually edited?'),
@@ -119,7 +124,7 @@ def parse_issue_body(body: str) -> dict:
         'unsupervised_method': parse_section(body, 'Type name of unsupervised classification method if used'),
         'embargo_period_months': parse_section(body, 'Embargo period'),
         'mapping_tool': parse_section(body, 'Name of tool/platform used for mapping'),
-        'publication': parse_section(body, 'Publication'),
+        'publication': parse_section(body, 'Publications'),
         }
     issue_dict = {**issue_dict, **get_processing(body)}
 
@@ -171,7 +176,8 @@ def main():
 
     print(f'Parsed entry:\n{json.dumps(entry, indent=2)}', flush=True)
 
-    out_path = Path('data') / f'new_submission_{issue_number:04d}.json'
+    # No zero-padding, so the name matches the git add path in the workflow
+    out_path = Path('data') / f'new_submission_{issue_number}.json'
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(entry, indent=2))
     print(f'Written to {out_path}', flush=True)
@@ -179,4 +185,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

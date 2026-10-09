@@ -1,6 +1,6 @@
 name: New Submission
 description: Start a new submission of glacier outlines to the GLIMS database
-title: "[New Submission]: <Submitters Name>, glaciers outlines of <Region>, <List or Range of Years>"
+title: "[New Submission]: <Submitter's Name>, glacier outlines of <Region>, <List or Range of Years>"
 labels:
   - "new submission"
 projects: ["glims-nsidc/projects/1"]
@@ -10,7 +10,7 @@ body:
       value: |
         Use this form to start a new submission of one or more glacier outlines to the GLIMS Glacier Database.
 
-        For a description of the submission process and the information and files required for a submission, please see [How to submit new glacier outlines to the GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html)
+        For a description of the submission process and the information and files required for a submission, please see [How to submit new glacier outlines to GLIMS](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html)
 
   - type: markdown
     attributes:
@@ -19,7 +19,7 @@ body:
         Please update the title field by changing the text within `<>`, with your name as the _Submitter_, the name of the _Country_ or _Region_ containing your outlines, and the _Year_ or _Range of Years_ of the outlines.  
 
 
-        For example, "[New Submission]: Agassiz, glacier outlines of Switzerland, 1840”.'
+        For example, "[New Submission]: Agassiz, glacier outlines of Switzerland, 1840".'
 
   - type: markdown
     attributes:
@@ -71,8 +71,8 @@ body:
         Please add the contact information of anyone else that contributed to mapping the glacier outlines.  Use a separate line for each new analyst.
 
         For example:
-        `von Humbolt, Alexander, Department of Mines, Principality of Bayreuth, Bayreuth, Germany`
-        `Lyell, Charles, Department of Geology Kings College London, Kings College London, Strand, London WC2R 2LS, United Kingdom`
+        `von Humboldt, Alexander, Department of Mines, Principality of Bayreuth, Bayreuth, Germany`
+        `Lyell, Charles, Department of Geology King's College London, King's College London, Strand, London WC2R 2LS, United Kingdom`
     validations:
       required: false
 
@@ -89,7 +89,7 @@ body:
       description: |
         Please provide the name of the file containing the vector features for the glacier outlines you are submitting.
 
-        Accepted files formats are: ESRI Shapefiles and GeoJSON
+        Accepted file formats are: ESRI Shapefiles and GeoJSON
 
         Please refer to [GLIMS File Format Requirements](https://glims-submissions-docs.readthedocs.io/en/latest/submitting_new_outlines.html#glacier-outlines-and-other-glacier-features) for information about the file content and vector feature attributes required.
     validations:
@@ -107,9 +107,9 @@ body:
     attributes:
       label: Data sources file names
       description: |
-        We require information about the data sources (images, dems or maps) used to create outlines.  These sources may be included in the Glacier Outline File or as a seprate file.
+        We require information about the data sources (images, DEMs or maps) used to create outlines.  These sources may be included in the Glacier Outline File or as a separate file.
 
-        Please refer to [GLIMS Submission Guide]() for information about the file content
+        Please refer to [GLIMS Submission Guide](https://glims-submissions-docs--5.org.readthedocs.build/en/5/submitting_new_outlines.html) for information about the file content
     validations:
       required: false
 
@@ -144,8 +144,7 @@ body:
   - type: checkboxes
     id: source_type
     attributes:
-      label: |
-        What types of source data were used to map outlines?
+      label: What types of source data were used to map outlines?
       description:   |
         Please select all that apply.
 
@@ -167,7 +166,7 @@ body:
       options:
         - label: Image transformed from latitude, longitude to projected coordinates.
         - label: Image converted from image coordinates to geographic coordinates.
-        - label: Image orthorectified?
+        - label: Image orthorectified.
         - label: Image DN converted to radiance.
         - label: Image radiance corrected for solar geometry.
         - label: Image radiometrically corrected.
@@ -232,7 +231,7 @@ body:
       required: false
 
   - type: input
-    id: usupervised_title
+    id: unsupervised_title
     attributes:
       label: Type name of unsupervised classification method if used
       description: |
@@ -255,7 +254,7 @@ body:
     attributes:
       label: Name of tool/platform used for mapping
       description: |
-        Please enter the name of the tool or platform used for analysis, for example, ESRI ArcGIS.  Use a seperate line for each tool.
+        Please enter the name of the tool or platform used for analysis, for example, ESRI ArcGIS.  Use a separate line for each tool.
     validations:
       required: true
 
@@ -275,10 +274,10 @@ body:
 
         Thank you for completing this submission form.  
         
-        Someone from the GLIMS team at NSIDC will send an email to the email-address associated with your Github account with instructions to upload your glacier outline file(s) and any ancilliary files.  
+        Someone from the GLIMS team at NSIDC will send an email to the email address associated with your GitHub account with instructions to upload your glacier outline file(s) and any ancillary files.  
         
-        We will review those files and will contact you via this issue on Github with any questions or requests for more information.  
+        We will review those files and will contact you via this issue on GitHub with any questions or requests for more information.  
         
         Also feel free to contact us by adding a comment to this issue.  If you have forgotten any information or want to correct any information you have provided, you can also add a comment to this issue.  
         
-        You can now click the blue CREATE button to create you new submission issue.'
+        You can now click the blue CREATE button to create your new submission issue.

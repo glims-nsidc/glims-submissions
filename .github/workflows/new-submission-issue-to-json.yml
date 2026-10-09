@@ -1,3 +1,5 @@
+name: Parse new submission issue to JSON
+
 on:
   issues:
     types: [opened]

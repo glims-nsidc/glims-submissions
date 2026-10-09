@@ -4,6 +4,12 @@ name: Create Jira Ticket from GitHub Issue
 on:
   issues:
     types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to create a Jira ticket for
+        required: true
+
 
 jobs:
   create-jira-issue:

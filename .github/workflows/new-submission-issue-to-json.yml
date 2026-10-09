@@ -39,7 +39,8 @@ jobs:
 
       - name: Commit JSON
         run: |
-          FILE=$(printf "new_submission_%04d.json" ${{ github.event.issue.number }})
+          N=$(jq -r '.number' issue.json)
+          FILE=$(printf "new_submission_%04d.json" "$N")
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/new_submission_${N}.json

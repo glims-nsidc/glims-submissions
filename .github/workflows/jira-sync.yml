@@ -11,6 +11,7 @@ jobs:
     permissions:
       issues: write
     if: |
+      github.event_name == 'workflow_dispatch' ||
       contains(github.event.issue.labels.*.name, 'resubmission') ||
       contains(github.event.issue.labels.*.name, 'new submission') ||
       contains(github.event.issue.labels.*.name, 'extinct glacier')

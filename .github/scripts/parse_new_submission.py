@@ -176,8 +176,7 @@ def main():
 
     print(f'Parsed entry:\n{json.dumps(entry, indent=2)}', flush=True)
 
-    # No zero-padding, so the name matches the git add path in the workflow
-    out_path = Path('data') / f'new_submission_{issue_number}.json'
+    out_path = Path('data') / f'new_submission_{issue_number:04d}.json'
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(entry, indent=2))
     print(f'Written to {out_path}', flush=True)
